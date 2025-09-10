@@ -1,7 +1,7 @@
 name: Deploy MkDocs to GitHub Pages
 on:
   push:
-    branches: [master] # change to 'main' if your repo uses main
+    branches: [master] # change to main if you use main
 
 concurrency:
   group: gh-pages-${{ github.ref }}
@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install mkdocs mkdocs-material mkdocs-document-dates
+          pip install mkdocs mkdocs-material
 
       - name: Build site
         run: mkdocs build --clean
@@ -42,15 +42,24 @@ jobs:
             exit 1
           fi
 
-      - name: Configure Pages
+      - name: "Debug: GET Pages site (API)"
+        run: |
+          echo "Calling Pages API for repo $GITHUB_REPOSITORY"
+          curl -i -sS \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/${{ github.repository }}/pages" || true
+
+      - name: Configure Pages (allow creation if missing)
         uses: actions/configure-pages@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          enablement: true
 
       - name: Upload artifact (site) for Pages (v4)
-        # switch to v4 so it uses upload-artifact@v4 under the hood
         uses: actions/upload-pages-artifact@v4
         with:
           path: ./site
-          # (optional) name: github-pages     # default is 'github-pages'
 
   deploy:
     needs: build-and-deploy
