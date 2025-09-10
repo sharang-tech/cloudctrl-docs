@@ -1,0 +1,129 @@
+site_name: CloudCTRL Docs
+site_url: https://docs.cloudctrl.dev
+edit_uri: docs
+nav:
+  - About: 
+      - index.md
+      - Changelog: changelog.md
+  - Guide:
+      - guide/quickstart.md
+      - CLI Reference: guide/cli-references.md
+      - Custom Plugin: guide/custom-plugin.md
+  - Providers:
+      - providers/index.md
+      - AWS: providers/aws.md
+      - GCP: providers/gcp.md
+      - DigitalOcean: providers/digitalocean.md
+      - Linode: providers/linode.md
+      - Vultr: providers/vultr.md
+      - Aiven: providers/aiven.md
+      - Render: providers/render.md
+      - Fly.io: providers/fly.md
+      - Koyeb: providers/koyeb.md
+      - Railway: providers/railway.md
+      - Planetscale: providers/planetscale.md
+      - Neon: providers/neon.md
+      - Runpod: providers/runpod.md
+      - Vast.ai: providers/vast.md
+      - Modal: providers/modal.md
+      - Alibaba Cloud: providers/alibaba.md
+      - Tencent Cloud: providers/tencent.md
+      - Huawei Cloud: providers/huawei.md
+      - Scaleway: providers/scaleway.md
+      - Vercel: providers/vercel.md
+      - Netlify: providers/netlify.md
+      - Together.ai: providers/together.md
+      - Fireworks.ai: providers/fireworks.md
+      - Fal.ai: providers/fal.md
+  - Integrations:
+      - integrations/index.md
+markdown_extensions:
+  - abbr
+  - attr_list
+  - footnotes
+  - tables
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+      url_download: false
+      url_max_size: 33554432
+      url_timeout: 10
+  - pymdownx.highlight:
+      use_pygments: true
+  - toc:
+      anchorlink: true
+      permalink: true
+  - pymdownx.betterem:
+      null
+  - pymdownx.caret:
+      null
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.top
+    - toc.follow
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes 
+    - navigation.footer 
+    - search.highlight
+    - search.share
+    - search.suggest
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+    - content.action.edit
+  icon:
+    repo: fontawesome/brands/github
+  palette: 
+    # Palette toggle for light mode
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default 
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+      primary: deep orange
+      accent: white
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+      primary: black
+      accent: deep orange
+
+  language: en
+  font:
+    text: Inter
+    code: Fira Code
+
+repo_name: fastapi/fastapi
+repo_url: https://github.com/fastapi/fastapi
+copyright: Copyright &copy; 2025 Sharang Tech Labs
+extra:
+  social:
+    - icon: fontawesome/brands/github 
+      link: https://github.com/sharang-tech/cloudctrl
+extra_css:
+  - style.css
+plugins:
+  - document-dates:
+      position: bottom

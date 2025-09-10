@@ -1,0 +1,37 @@
+:root {
+  --text-color: var(
+    --md-primary-fg-color
+  ); /* Dark mode text color */
+  --copy-to-llm-button-bg: var(--md-code-bg-color);
+  --copy-to-llm-button-hover: var(--md-primary-fg-color);
+  --white: #fff;
+}
+
+.copy-to-llm-split-container {
+  border: none !important;
+}
+
+.copy-to-llm-section .button-text {
+  font-size: 14px;
+}
+
+.copy-to-llm-dropdown {
+  padding: 0.5rem !important;
+}
+
+.copy-to-llm-dropdown-item {
+  font-size: 14px !important;
+  border-radius: 5px;
+}
+
+.copy-to-llm-dropdown-item:hover {
+  background-color: #eee !important;
+}
+
+.copy-to-llm-dropdown-item:first-child {
+  border-radius: 5px !important;
+}
+
+.copy-to-llm-dropdown-item:last-child {
+  border-radius: 5px !important;
+}
