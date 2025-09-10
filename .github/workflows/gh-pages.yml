@@ -28,7 +28,7 @@ jobs:
       - name: Build site
         run: mkdocs build --clean
 
-      - name: Deploy to GitHub Pages
+      - name: Configure Pages
         uses: actions/configure-pages@v4
 
       - name: Upload artifact (site)
@@ -40,5 +40,5 @@ jobs:
     needs: build-and-deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy artifact to GitHub Pages
+      - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v1
