@@ -3,6 +3,10 @@ on:
   push:
     branches: [master]
 
+concurrency:
+  group: gh-pages-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
   pages: write
@@ -28,10 +32,20 @@ jobs:
       - name: Build site
         run: mkdocs build --clean
 
+      - name: Show built site files (debug)
+        run: |
+          if [ -d "./site" ]; then
+            echo "site/ exists — contents:"
+            ls -la ./site || true
+          else
+            echo "site/ directory missing!"
+            exit 1
+          fi
+
       - name: Configure Pages
         uses: actions/configure-pages@v4
 
-      - name: Upload artifact (site)
+      - name: Upload artifact (site) for Pages
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./site
