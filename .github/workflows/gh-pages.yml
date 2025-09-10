@@ -1,7 +1,7 @@
 name: Deploy MkDocs to GitHub Pages
 on:
   push:
-    branches: [master]
+    branches: [master] # change to 'main' if your repo uses main
 
 concurrency:
   group: gh-pages-${{ github.ref }}
@@ -45,14 +45,16 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v4
 
-      - name: Upload artifact (site) for Pages
-        uses: actions/upload-pages-artifact@v1
+      - name: Upload artifact (site) for Pages (v4)
+        # switch to v4 so it uses upload-artifact@v4 under the hood
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./site
+          # (optional) name: github-pages     # default is 'github-pages'
 
   deploy:
     needs: build-and-deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+      - name: Deploy to GitHub Pages (v4)
+        uses: actions/deploy-pages@v4
